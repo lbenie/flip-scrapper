@@ -7,15 +7,18 @@
   "author": "Lucien Bénié <lucien.benie@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "tsnd  --watch --respawn src"
+    "dev": "tsnd  --watch --respawn src",
+    "start": "tsnd src/index.ts"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^8.2.0",
+    "@types/mongodb": "^3.3.13",
     "@typescript-eslint/eslint-plugin": "^2.12.0",
     "@typescript-eslint/parser": "^2.12.0",
     "commitizen": "^4.0.3",
     "commitlint": "^8.2.0",
     "cz-conventional-changelog": "3.0.2",
+    "dotenv": "^8.2.0",
     "eslint": "^6.7.2",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-prettier": "^3.1.2",
@@ -29,6 +32,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "date-fns": "^2.8.1",
+    "mongodb": "^3.4.0",
     "rxjs": "^6.5.3",
     "typescript": "^3.7.3"
   },

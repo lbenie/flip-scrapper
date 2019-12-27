@@ -24,7 +24,7 @@ interface FilterResponse {
   readonly filters: readonly Filter[]
 }
 
-export interface ItemReponse {
+export interface ItemResponse {
   readonly flyer_item_id: number
   readonly flyer_id: number
   readonly left: number
@@ -59,7 +59,7 @@ export interface FlipResponse {
   readonly merchants: readonly unknown[]
   readonly related_flyers: readonly unknown[]
   readonly outside_fsa_flyers: unknown
-  readonly items: readonly ItemReponse[]
+  readonly items: readonly ItemResponse[]
   readonly ecom_items: readonly unknown[]
   readonly related_items: readonly unknown[]
   readonly normalized_query: string

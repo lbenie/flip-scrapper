@@ -3,12 +3,16 @@ import { ResultSet } from '../models/resultSet'
 import { FlipResponse } from '../models/flip'
 import { from, EMPTY, timer } from 'rxjs'
 import { mergeMap, scan, tap, catchError } from 'rxjs/operators'
-import { format } from 'date-fns'
 import { terms } from './search.json'
-import { writeFileSync } from 'fs'
-import { join } from 'path'
+import { getConnection } from '../data/database'
+import { config } from 'dotenv'
+import { MongoClient } from 'mongodb'
+
+config()
 
 class FlipScrapper {
+  private client?: MongoClient
+
   private async getItems(
     query: string,
     postalCode = 'G1G2A1',
@@ -42,30 +46,28 @@ class FlipScrapper {
           } as ResultSet),
       ),
       scan((acc, value) => [...acc, { ...value }], [] as ResultSet[]),
-      tap(results => {
-        // Should write in a database but this is fine for now
-        const now = Date.now()
-
-        const resultObj = {
-          parsedDate: format(now, `yyyy-MM-dd'T'HH:mm:ss`),
-          results,
-        }
-        writeFileSync(
-          join(
-            __dirname,
-            '..',
-            'data',
-            `${format(now, 'dd-MM-yyyy')}-data.json`,
-          ),
-          JSON.stringify(resultObj, null, 4),
-          'utf-8',
+      tap(async results => {
+        this.client = await getConnection()
+        const db = this.client?.db(process.env.MONGO_DATABASE)
+        const itemCollection = db.collection(
+          process.env.MONGO_DATABASE_COLLECTION_ITEMS,
         )
+
+        results.forEach(async ({ items, query }) => {
+          await itemCollection.insertMany(
+            items.map(item => ({ ...item, query })),
+          )
+        })
       }),
       catchError(err => {
         console.error(err)
         return EMPTY
       }),
     )
+  }
+
+  async close() {
+    await this.client?.close()
   }
 }
 
