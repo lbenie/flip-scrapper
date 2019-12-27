@@ -3,7 +3,7 @@ import { ResultSet } from '../models/resultSet'
 import { FlipResponse } from '../models/flip'
 import { from, EMPTY, timer } from 'rxjs'
 import { mergeMap, scan, tap, catchError } from 'rxjs/operators'
-import { terms } from './search.json'
+import { stores } from './search.json'
 import { getConnection } from '../data/database'
 import { config } from 'dotenv'
 import { MongoClient } from 'mongodb'
@@ -37,7 +37,7 @@ class FlipScrapper {
     const oneWeek = 1000 * 60 * 60 * 24 * 7
 
     return timer(0, oneWeek).pipe(
-      mergeMap(() => from(terms)),
+      mergeMap(() => from(stores)),
       mergeMap(
         async query =>
           ({
