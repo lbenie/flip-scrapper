@@ -27,7 +27,7 @@
     "jest": "24.9.0",
     "lint-staged": "9.5.0",
     "prettier": "2.3.2",
-    "ts-node-dev": "1.1.7"
+    "ts-node-dev": "1.1.8"
   },
   "dependencies": {
     "axios": "^0.21.1",
