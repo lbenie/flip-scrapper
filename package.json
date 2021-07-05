@@ -14,7 +14,7 @@
     "@commitlint/config-conventional": "12.1.4",
     "@types/mongodb": "3.6.19",
     "@typescript-eslint/eslint-plugin": "4.28.1",
-    "@typescript-eslint/parser": "4.28.1",
+    "@typescript-eslint/parser": "4.28.2",
     "commitizen": "4.0.3",
     "commitlint": "12.1.4",
     "cz-conventional-changelog": "3.0.2",
