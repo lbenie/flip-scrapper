@@ -13,8 +13,8 @@
   "devDependencies": {
     "@commitlint/config-conventional": "14.1.0",
     "@types/mongodb": "4.0.6",
-    "@typescript-eslint/eslint-plugin": "5.2.0",
-    "@typescript-eslint/parser": "5.2.0",
+    "@typescript-eslint/eslint-plugin": "5.3.0",
+    "@typescript-eslint/parser": "5.3.0",
     "commitizen": "4.0.3",
     "commitlint": "14.1.0",
     "cz-conventional-changelog": "3.0.2",
