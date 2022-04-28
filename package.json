@@ -11,12 +11,12 @@
     "start": "tsnd src/index.ts"
   },
   "devDependencies": {
-    "@commitlint/config-conventional": "16.2.1",
+    "@commitlint/config-conventional": "16.2.4",
     "@types/mongodb": "4.0.6",
     "@typescript-eslint/eslint-plugin": "5.21.0",
     "@typescript-eslint/parser": "5.21.0",
     "commitizen": "4.2.4",
-    "commitlint": "16.2.3",
+    "commitlint": "16.2.4",
     "cz-conventional-changelog": "3.3.0",
     "dotenv": "16.0.0",
     "eslint": "8.14.0",
